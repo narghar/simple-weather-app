@@ -1,0 +1,31 @@
+{
+  "name": "simple-weather-app",
+  "version": "1.0.0",
+  "description": "Weather App - made during CodersCamp course",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/narghar/simple-weather-app.git"
+  },
+  "author": "Igor Wysocki",
+  "contributors": [
+    "Magda Szade (https://github.com/MagdaSzade)",
+    "Marek Urbaniec (https://github.com/Pesidonvera)",
+    "Michalina Gańczarczyk (https://github.com/marek0209)"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/narghar/simple-weather-app/issues"
+  },
+  "homepage": "https://github.com/narghar/simple-weather-app#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0"
+  }
+}
