@@ -1,11 +1,12 @@
   const btn = document.querySelector('.searchButton');
-  const query = document.querySelector('.search');
+  const search = document.querySelector('.search');
 
   btn.addEventListener("click", getData);
 
 
   async function getData() {
-    let cityName = {name: query.value};
+    let query = encodeURIComponent(search.value);
+    let cityName = {name: query};
     const response = await fetch('api/weather',  {
       method: "post",
       headers: {
