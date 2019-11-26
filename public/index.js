@@ -50,7 +50,7 @@ function setData(data) {
 
 function userLocation() {
 
-  if (!navigator.geolocation){
+  if (navigator.geolocation){
     navigator.geolocation.getCurrentPosition(success)
   }
   function success(position) {
