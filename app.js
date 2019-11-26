@@ -9,7 +9,7 @@ app.use(express.json());
 const port = process.env.PORT || 3000;
 const key = process.env.WEATHER_API_KEY;
 
-let url = `https://api.openweathermap.org/data/2.5/weather?appid=${key}&q=`;
+let url = `https://api.openweathermap.org/data/2.5/weather?appid=${key}&units=metric&q=`;
 app.post('/api/weather/', (req, res) => {
   let query = url + req.body.name;
   console.log(query);
