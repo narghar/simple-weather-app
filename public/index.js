@@ -33,14 +33,16 @@ async function getData() {
   console.log(response);
   const data = await response.json();
   console.log(data);
-  setData(data);
+  if(data.weather) {
+    setData(data);
+  }
 }
 
 function setData(data) {
   city.textContent = data.name;
   country.textContent = data.sys.country;
   temperature.textContent = data.main.temp;
-  condition__icon.setAttribute('src', `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
+  condition__icon.setAttribute('src', `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
   condition__desc.textContent = data.weather[0].description;
   pressure.textContent = data.main.pressure;
   wind.textContent = data.wind.speed;
@@ -49,15 +51,19 @@ function setData(data) {
 
 
 function userLocation() {
-
+  search.value = '';
   if (navigator.geolocation){
-    navigator.geolocation.getCurrentPosition(success)
+    navigator.geolocation.getCurrentPosition(success, error)
   }
   function success(position) {
     place = {
       latitude: position.coords.latitude,
       longitude: position.coords.longitude
     }
+    getData();
+  }
+  function error(position) {
+    place = {name: 'Warszawa'};
     getData();
   }
 
