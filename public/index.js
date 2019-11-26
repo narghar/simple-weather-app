@@ -14,16 +14,21 @@ btn.addEventListener("click", getData);
 
 
 async function getData() {
-  let query = encodeURIComponent(search.value);
-  let cityName = {
-    name: query
-  };
+
+  if(search.value) {
+    let query = encodeURIComponent(search.value);
+    place = {name: query};
+  }
+  else {
+    place = place;
+  }
+  console.log(place);
   const response = await fetch('api/weather', {
     method: "post",
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(cityName)
+    body: JSON.stringify(place)
   });
   console.log(response);
   const data = await response.json();
@@ -41,3 +46,21 @@ function setData(data) {
   wind.textContent = data.wind.speed;
   humidity.textContent = data.main.humidity;
 }
+
+
+function userLocation() {
+
+  if ("geolocation" in navigator) {
+    navigator.geolocation.getCurrentPosition(success)
+  }
+  function success(position) {
+    place = {
+      latitude: position.coords.latitude,
+      longitude: position.coords.longitude
+    }
+    getData();
+  }
+
+}
+userLocation();
+
