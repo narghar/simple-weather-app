@@ -1,0 +1,27 @@
+body {
+  color: #fff;
+  background-image: url('./photos/bg.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+main {
+  width: 70vw;
+  margin: 0 auto;
+  text-align: center;
+}
+h1 {
+  text-transform: uppercase;
+}
+
+.info {
+  min-width: 360px;
+  background: #667db6;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+.country {
+  color: orange;
+  margin-left: 1rem;
+}
