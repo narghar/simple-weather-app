@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const geolocation = __webpack_require__(/*! ./modules/geolocation */ \"./js/modules/geolocation.js\")\nconst getData = __webpack_require__(/*! ./modules/dataProcessing */ \"./js/modules/dataProcessing.js\")\n\nconst btn = document.querySelector('.searchButton');\nconst search = document.querySelector('.search');\n\ngeolocation();\n\nbtn.addEventListener(\"click\", () => {\n  let cityName = encodeURIComponent(search.value);\n  let query = {\n    q: cityName,\n  };\n  getData(query);\n});\n\n\n\n//# sourceURL=webpack:///./js/index.js?");
+eval("const geolocation = __webpack_require__(/*! ./modules/geolocation */ \"./js/modules/geolocation.js\")\nconst getData = __webpack_require__(/*! ./modules/dataProcessing */ \"./js/modules/dataProcessing.js\")\n\nconst btn = document.querySelector('.searchButton');\nconst search = document.querySelector('.search');\n\ngeolocation();\n\nbtn.addEventListener(\"click\", () => {\n  let cityName = encodeURI(search.value);\n  let query = {\n    q: cityName,\n  };\n  getData(query);\n});\n\n\n\n//# sourceURL=webpack:///./js/index.js?");
 
 /***/ }),
 

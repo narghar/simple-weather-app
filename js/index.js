@@ -7,7 +7,7 @@ const search = document.querySelector('.search');
 geolocation();
 
 btn.addEventListener("click", () => {
-  let cityName = encodeURIComponent(search.value);
+  let cityName = encodeURI(search.value);
   let query = {
     q: cityName,
   };
