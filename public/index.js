@@ -10,6 +10,9 @@ const pressure = document.querySelector('.pressure');
 const wind = document.querySelector('.wind');
 const humidity = document.querySelector('.humidity');
 
+let units = 'metric';
+let lang = 'pl';
+
 btn.addEventListener("click", getData);
 
 
@@ -17,12 +20,13 @@ async function getData() {
 
   if(search.value) {
     let query = encodeURIComponent(search.value);
-    place = {name: query};
+    place = {q: query};
   }
   else {
     place = place;
   }
-  console.log(place);
+  place.units = units;
+  place.lang = lang;
   const response = await fetch('api/weather', {
     method: "post",
     headers: {
@@ -57,13 +61,13 @@ function userLocation() {
   }
   function success(position) {
     place = {
-      latitude: position.coords.latitude,
-      longitude: position.coords.longitude
+      lat: position.coords.latitude,
+      lon: position.coords.longitude
     }
     getData();
   }
   function error(position) {
-    place = {name: 'Warszawa'};
+    place = {q: 'Warszawa'};
     getData();
   }
 
