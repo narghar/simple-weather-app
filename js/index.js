@@ -9,7 +9,7 @@ geolocation();
 btn.addEventListener("click", () => {
   let cityName = encodeURIComponent(search.value);
   let query = {
-    name: cityName,
+    q: cityName,
   };
   getData(query);
 });

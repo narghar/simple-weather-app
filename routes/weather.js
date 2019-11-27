@@ -4,25 +4,24 @@ const request = require('request');
 const router = express.Router();
 
 const key = process.env.WEATHER_API_KEY;
-const units = 'metric';
-const lang = 'pl';
-
-let url = `https://api.openweathermap.org/data/2.5/weather?appid=${key}&units=${units}&lang=${lang}&`;
-
+const url = new URL('https://api.openweathermap.org/data/2.5/weather');
 router.post('/', (req, res) => {
-    let query;
-    if (req.body.name) { 
-      query = url + `q=${req.body.name}`;
-    } else if (req.body.latitude && req.body.longitude) {
-      query = url + `lat=${req.body.latitude}&lon=${req.body.longitude}`;
-    }
 
-    console.log(query);
-    request(query, function (error, response, body) {
-      console.log('error:', error);
-      console.log('statusCode:', response && response.statusCode);
-      res.json(JSON.parse(body)); //json response
-    });
+  console.log(req.body)
+
+  const params = new URLSearchParams(req.body);
+  params.append('appid', key);
+  url.search = params.toString();
+
+  request(url.href, (error, response, body) => {
+    console.log('error:', error);
+    console.log('statusCode:', response && response.statusCode);
+    res.send(body); //json response
   });
+});
+
+router.get('/', (req, res) => {
+  res.redirect('/');
+});
 
 module.exports = router;
