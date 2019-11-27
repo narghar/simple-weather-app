@@ -4,8 +4,8 @@
   "description": "Weather App - made during CodersCamp course",
   "main": "app.js",
   "scripts": {
-    "start": "npm-run-all --parallel watch:server watch:build",
-    "watch:server": "nodemon app.js -e html,js,css",
+    "dev": "npm-run-all --parallel watch:server watch:build",
+    "start": "nodemon app.js -e html,js,css",
     "watch:build": "webpack ./js/index.js --output ./public/bundle.js --mode development --watch"
   },
   "repository": {
