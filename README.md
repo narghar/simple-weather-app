@@ -12,6 +12,8 @@
 5. Open file `.env` and add the following code:
 ```
 WEATHER_API_KEY='PASTE YOUR API KEY HERE'
+GOOGLEMAPS_KEY='PASTE YOUR API KEY for google maps HERE'
+
 ```
 6. Assuming that you have at least [Node 10 LTS](https://nodejs.org/en/) installed, use npm to install:
 `npm install`
