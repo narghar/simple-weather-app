@@ -16,7 +16,7 @@ function getGeolocation() {
     }
 
     function error(position) {
-        place = {
+        query = {
             q: 'Warszawa'
         };
         getData();
