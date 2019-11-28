@@ -19,7 +19,7 @@ function getGeolocation() {
         query = {
             q: 'Warszawa'
         };
-        getData();
+        getData(query);
     }
 }
 
