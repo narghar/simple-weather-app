@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const geolocation = __webpack_require__(/*! ./modules/geolocation */ \"./js/modules/geolocation.js\")\nconst getData = __webpack_require__(/*! ./modules/dataProcessing */ \"./js/modules/dataProcessing.js\")\n\nconst btn = document.querySelector('.searchButton');\nconst search = document.querySelector('.search');\n\ngeolocation();\n\nbtn.addEventListener(\"click\", () => {\n  let cityName = encodeURI(search.value);\n  let query = {\n    q: cityName,\n  };\n  getData(query);\n});\n\n\n\n//# sourceURL=webpack:///./js/index.js?");
+eval("const geolocation = __webpack_require__(/*! ./modules/geolocation */ \"./js/modules/geolocation.js\");\r\nconst getData = __webpack_require__(/*! ./modules/dataProcessing */ \"./js/modules/dataProcessing.js\");\r\nconst Prompt = __webpack_require__(/*! ./modules/prompt */ \"./js/modules/prompt.js\");\r\n\r\nconst btn = document.querySelector('.searchButton');\r\nconst search = document.querySelector('.search');\r\n\r\ngeolocation();\r\n\r\nPrompt.loadGoogleMapsApi().then(function(googleMaps) {\r\n  Prompt.startAutocomplete(googleMaps);\r\n});\r\n\r\n\r\nbtn.addEventListener(\"click\", () => {\r\n  let cityName = encodeURI(search.value);\r\n  let query = {\r\n    q: cityName,\r\n  };\r\n  getData(query);\r\n});\r\n\r\n\n\n//# sourceURL=webpack:///./js/index.js?");
 
 /***/ }),
 
@@ -116,6 +116,28 @@ eval("const city = document.querySelector('.city');\r\nconst country = document.
 /***/ (function(module, exports, __webpack_require__) {
 
 eval("const getData = __webpack_require__(/*! ./dataProcessing */ \"./js/modules/dataProcessing.js\");\r\n\r\nfunction getGeolocation() {\r\n    if (\"geolocation\" in navigator) {\r\n        navigator.geolocation.getCurrentPosition(success, error)\r\n    } else {\r\n        console.log(\"geolocation is turn of\");\r\n    }\r\n\r\n    function success(position) {\r\n        query = {\r\n            lat: position.coords.latitude,\r\n            lon: position.coords.longitude,\r\n        }\r\n        getData(query);\r\n    }\r\n\r\n    function error(position) {\r\n        query = {\r\n            q: 'Warszawa'\r\n        };\r\n        getData(query);\r\n    }\r\n}\r\n\r\n\r\n//api.openweathermap.org/data/2.5/weather?\r\nmodule.exports = getGeolocation;\r\n\n\n//# sourceURL=webpack:///./js/modules/geolocation.js?");
+
+/***/ }),
+
+/***/ "./js/modules/prompt.js":
+/*!******************************!*\
+  !*** ./js/modules/prompt.js ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("const loadGoogleMapsApi = __webpack_require__(/*! load-google-maps-api */ \"./node_modules/load-google-maps-api/index.js\");\r\n\r\nclass Prompt {\r\n\r\n  static loadGoogleMapsApi() {\r\n    return loadGoogleMapsApi({\r\n      key: \"AIzaSyAuvXquQK2uDI-RKiGXBt05aMsN6oMCaG8\",\r\n      libraries: [\"places\"]\r\n    });\r\n  }\r\n\r\n  static startAutocomplete(googleMaps) {\r\n    let options = {\r\n      types: ['(cities)'],\r\n      componentRestrictions: {\r\n         country: \"pl\"\r\n      }\r\n    };\r\n    const input = document.getElementById('searchTextField');\r\n    new googleMaps.places.Autocomplete(input, options);\r\n  }\r\n}\r\n\r\nmodule.exports = Prompt;\n\n//# sourceURL=webpack:///./js/modules/prompt.js?");
+
+/***/ }),
+
+/***/ "./node_modules/load-google-maps-api/index.js":
+/*!****************************************************!*\
+  !*** ./node_modules/load-google-maps-api/index.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("const API_URL = 'https://maps.googleapis.com/maps/api/js'\nconst CALLBACK_NAME = '__googleMapsApiOnLoadCallback'\n\nconst optionsKeys = ['channel', 'client', 'key', 'language', 'region', 'v']\n\nlet promise = null\n\nmodule.exports = function (options = {}) {\n  promise =\n    promise ||\n    new Promise(function (resolve, reject) {\n      // Reject the promise after a timeout\n      const timeoutId = setTimeout(function () {\n        window[CALLBACK_NAME] = function () {} // Set the on load callback to a no-op\n        reject(new Error('Could not load the Google Maps API'))\n      }, options.timeout || 10000)\n\n      // Hook up the on load callback\n      window[CALLBACK_NAME] = function () {\n        if (timeoutId !== null) {\n          clearTimeout(timeoutId)\n        }\n        resolve(window.google.maps)\n        delete window[CALLBACK_NAME]\n      }\n\n      // Prepare the `script` tag to be inserted into the page\n      const scriptElement = document.createElement('script')\n      const params = [`callback=${CALLBACK_NAME}`]\n      optionsKeys.forEach(function (key) {\n        if (options[key]) {\n          params.push(`${key}=${options[key]}`)\n        }\n      })\n      if (options.libraries && options.libraries.length) {\n        params.push(`libraries=${options.libraries.join(',')}`)\n      }\n      scriptElement.src = `${options.apiUrl || API_URL}?${params.join('&')}`\n\n      // Insert the `script` tag\n      document.body.appendChild(scriptElement)\n    })\n  return promise\n}\n\n\n//# sourceURL=webpack:///./node_modules/load-google-maps-api/index.js?");
 
 /***/ })
 
