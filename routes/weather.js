@@ -8,7 +8,9 @@ const url = new URL('https://api.openweathermap.org/data/2.5/weather');
 router.post('/', (req, res) => {
 
 
-  if(req.body.q) {req.body.q = decodeURI(req.body.q)};
+  if (req.body.q) {
+    req.body.q = decodeURI(req.body.q).replace(', Polska', '') + ',PL';
+  };
   console.log(req.body);
   const params = new URLSearchParams(req.body);
   params.append('appid', key);
