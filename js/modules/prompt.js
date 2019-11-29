@@ -15,16 +15,18 @@ class Prompt {
     let options = {
       types: ['(cities)'],
       componentRestrictions: {
-         country: "pl"
+        country: "pl"
       },
-      fields: ['formatted_address']
+      fields: ['address_components']
     };
     let input = document.getElementById('searchTextField');
     const autocomplete = new googleMaps.places.Autocomplete(input, options);
     google.maps.event.addListener(autocomplete, 'place_changed', function () {
-      let place = autocomplete.getPlace().formatted_address;
-      place = place.split(',');
-      input.value = place[0];
+      let place = autocomplete.getPlace();
+      if (place.address_components) {
+        input.value = place.address_components[0].long_name;
+      }
+
     });
   }
 }
