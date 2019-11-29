@@ -9,7 +9,7 @@ router.post('/', (req, res) => {
 
 
   if (req.body.q) {
-    req.body.q = decodeURI(req.body.q).replace(', Polska', '') + ',PL';
+    req.body.q = decodeURI(req.body.q) + ',PL';
   };
   console.log(req.body);
   const params = new URLSearchParams(req.body);

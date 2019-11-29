@@ -5,6 +5,8 @@ class Prompt {
   static loadGoogleMapsApi() {
     return loadGoogleMapsApi({
       key: process.env.GOOGLEMAPS_KEY,
+      language: 'pl',
+      region: 'PL',
       libraries: ["places"]
     });
   }
@@ -14,10 +16,16 @@ class Prompt {
       types: ['(cities)'],
       componentRestrictions: {
          country: "pl"
-      }
+      },
+      fields: ['formatted_address']
     };
-    const input = document.getElementById('searchTextField');
-    new googleMaps.places.Autocomplete(input, options);
+    let input = document.getElementById('searchTextField');
+    const autocomplete = new googleMaps.places.Autocomplete(input, options);
+    google.maps.event.addListener(autocomplete, 'place_changed', function () {
+      let place = autocomplete.getPlace().formatted_address;
+      place = place.split(',');
+      input.value = place[0];
+    });
   }
 }
 
