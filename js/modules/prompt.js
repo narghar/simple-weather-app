@@ -1,5 +1,5 @@
 const loadGoogleMapsApi = require('load-google-maps-api');
-
+const getData = require('./dataProcessing');
 class Prompt {
 
   static loadGoogleMapsApi() {
@@ -25,6 +25,11 @@ class Prompt {
       let place = autocomplete.getPlace();
       if (place.address_components) {
         input.value = place.address_components[0].long_name;
+        let cityName = encodeURI(input.value);
+        let query = {
+          q: cityName,
+        };
+        getData(query);
       }
 
     });
