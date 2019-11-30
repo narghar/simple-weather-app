@@ -1,41 +1,123 @@
 * {
   box-sizing: border-box;
+  font-family: 'Sniglet', cursive;
+  --font-color: #FDFDFD;
 }
+
 body {
   margin: 0;
   padding: 0;
 }
 
 body {
-  color: #fff;
+  color: var(--font-color);
   background-image: url('./photos/bg.jpg');
   background-size: cover;
   background-position: center;
   height: 100vh;
-
 }
 
 main {
-  max-width: 1000px;
-  margin: 0 auto;
+  width: 80vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
   text-align: center;
 }
-h1 {
-  margin: 0;
-  padding-top: 20px;
-  text-transform: uppercase;
-}
 
-.info {
+.conteiner {
   width: 70%;
-  min-width: 300px;
-  margin: 0 auto;
-  background: #667db6;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+  max-width: 630px;
+  height: 70%;
+  min-height: 600px;
+  margin: auto;
+  display: grid;
+  grid-template-rows: 2fr 1fr 4fr 6fr;
+  justify-items: center;
+  align-items: center;
+  background-image: linear-gradient(hsla(253, 42%, 54%, 0.6), hsla(254, 53%, 23%, 0.6));
+  border: solid 5px hsla(254, 53%, 23%, 0.3);
+  border-radius: 30px;
 }
-.country {
-  color: orange;
-  margin-left: 1rem;
+
+.city {
+  align-self: flex-end;
+  font-size: 3rem;
+  letter-spacing: 5px;
+}
+
+#searchTextField {
+  width: 90%;
+  color: var(--font-color);
+  text-align: center;
+  background: none;
+  border: none;
+  font-size: 3rem;
+  letter-spacing: 4px;
+}
+
+.date {
+  align-self: flex-start;
+  letter-spacing: 2px;
+}
+
+.main-temp-holder {
+  width: 80%;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 2fr 1fr;
+  grid-template-areas: 
+    "empty1 icon empty2 temp empty3";
+  justify-content: space-around;
+  align-items: center;
+  font-size: 6rem;
+  letter-spacing: 5px;
+}
+
+.condition__icon {
+  width: 200%;
+  height: auto;
+  grid-area: icon;
+}
+
+.current-temp-holder {
+  height: 7rem;
+  grid-area: temp;
+  display: flex;
+  align-items: flex-start;
+}
+
+.main-temp {
+  display: inline;
+}
+
+.unit {
+  font-size: 2rem;
+}
+
+.main-temp {
+  margin: 0;
+}
+
+
+
+.predict {
+  width: 100%;
+  display: flex;
+  border: solid 2px green;
+  justify-content: space-around;
+}
+
+.predicted-data {
+  border: solid 2px red;
+  display: grid;
+  grid-template-rows: 1fr 2fr 1fr 1fr 1fr;
+  justify-items: center;
+  align-content: center;
+}
+
+.holder-with-img {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }

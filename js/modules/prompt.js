@@ -1,5 +1,5 @@
 const loadGoogleMapsApi = require('load-google-maps-api');
-
+const getData = require('./dataProcessing');
 class Prompt {
 
   static loadGoogleMapsApi() {
@@ -19,12 +19,17 @@ class Prompt {
       },
       fields: ['address_components']
     };
-    let input = document.getElementById('searchTextField');
+    const input = document.getElementById('searchTextField');
     const autocomplete = new googleMaps.places.Autocomplete(input, options);
     google.maps.event.addListener(autocomplete, 'place_changed', function () {
       let place = autocomplete.getPlace();
       if (place.address_components) {
         input.value = place.address_components[0].long_name;
+        let cityName = encodeURI(input.value);
+        let query = {
+          q: cityName,
+        };
+        getData(query);
       }
 
     });

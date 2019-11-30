@@ -1,3 +1,4 @@
+const input = document.getElementById('searchTextField');
 const city = document.querySelector('.city');
 const country = document.querySelector('.country');
 const temperature = document.querySelector('.temperature');
@@ -30,14 +31,14 @@ async function getData(query) {
 }
 
 function setData(data) {
-  city.textContent = data.name;
-  country.textContent = data.sys.country;
+  input.setAttribute("value", data.name);
+  //country.textContent = data.sys.country;
   temperature.textContent = data.main.temp;
   condition__icon.setAttribute('src', `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
-  condition__desc.textContent = data.weather[0].description;
-  pressure.textContent = data.main.pressure;
-  wind.textContent = data.wind.speed;
-  humidity.textContent = data.main.humidity;
+  //condition__desc.textContent = data.weather[0].description;
+  //pressure.textContent = data.main.pressure;
+  //wind.textContent = data.wind.speed;
+  //humidity.textContent = data.main.humidity;
 }
 
 module.exports = getData;
