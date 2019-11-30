@@ -22,7 +22,7 @@ async function getData(query) {
   query.lang = lang;
 
 
-  const response = await fetch('/api/weather', {
+  const response = await fetch('/api/forecast', {
     method: "post",
     headers: {
       'Content-Type': 'application/json',
@@ -31,7 +31,7 @@ async function getData(query) {
   });
 
 
-  const responseTwo = await fetch('/api/weatherTwo', {
+  const responseTwo = await fetch('/api/weather', {
     method: "post",
     headers: {
       'Content-Type': 'application/json',

@@ -4,12 +4,9 @@ const request = require('request');
 const router = express.Router();
 
 const key = process.env.WEATHER_API_KEY;
-const url = new URL('http://api.openweathermap.org/data/2.5/forecast');
+const url = new URL('https://api.openweathermap.org/data/2.5/weather');
 
 
-router.get('/', (req, res) => {
-  res.redirect('/');
-});
 
 router.post('/', (req, res) => {
 
@@ -27,8 +24,5 @@ router.post('/', (req, res) => {
   });
 });
 
-router.get('/', (req, res) => {
-  res.redirect('/');
-});
 
 module.exports = router;
