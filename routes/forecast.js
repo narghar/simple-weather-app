@@ -10,7 +10,9 @@ const url = new URL('http://api.openweathermap.org/data/2.5/forecast');
 router.post('/', (req, res) => {
 
 
-  if(req.body.q) {req.body.q = decodeURI(req.body.q)};
+  if (req.body.q) {
+    req.body.q = decodeURI(req.body.q) + ',PL';
+  };
   console.log(req.body);
   const params = new URLSearchParams(req.body);
   params.append('appid', key);
