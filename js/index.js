@@ -1,3 +1,4 @@
+
 const geolocation = require("./modules/geolocation");
 const getData = require("./modules/dataProcessing");
 const Prompt = require("./modules/prompt");
@@ -9,6 +10,3 @@ geolocation();
 Prompt.loadGoogleMapsApi().then(function(googleMaps) {
   Prompt.startAutocomplete(googleMaps);
 });
-
-
-
