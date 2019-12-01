@@ -7,22 +7,25 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Simple Weather App</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Sniglet&display=swap" rel="stylesheet">
 </head>
 
 <body>
   <main>
-    <h1>Pogodynka</h1>
-    <input id="searchTextField" type="text" class="search" placeholder="Wpisz nazwę miasta"></input>
-    <div class="info">
-      <h2><span class="city"> </span><span class="country"></span></h2>
-      <p>Temperatura: <span class="temperature"></span></p>
-      <figure class="condition">
+    <div class="conteiner">
+      <div class="city">
+        <input id="search-city" type="text" class="search" value=""></input>
+      </div>
+      <div class="date">DATA</div>
+      <div class="main-temp-holder">
         <img src="" alt="" title="" class="condition__icon">
-        <figcaption class="condition__desc"></figcaption>
-      </figure>
-      <p>Ciśnienie: <span class="pressure"></span></p>
-      <p>Wiatr: <span class="wind"></span></p>
-      <p>Wilgotność: <span class="humidity"></span></p>
+        <div class="current-temp-holder">
+          <p class="temperature main-temp">0</p>
+          <p class="unit main-temp">&degC</p>
+        </div>
+      </div>
+      <div class="predict"></div>
+    </div>
     </div>
     <div class="fiveDaysWeather">
       <p>Tomorrow <span class="dayOne"></span> </p>
@@ -34,4 +37,5 @@
   </main>
   <script src="./bundle.js"></script>
 </body>
+
 </html>

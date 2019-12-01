@@ -1,5 +1,9 @@
 const loadGoogleMapsApi = require('load-google-maps-api');
 const getData = require('./dataProcessing');
+<<<<<<< HEAD
+=======
+
+>>>>>>> newLayout
 class Prompt {
 
   static loadGoogleMapsApi() {
@@ -19,7 +23,7 @@ class Prompt {
       },
       fields: ['address_components']
     };
-    let input = document.getElementById('searchTextField');
+    const input = document.getElementById('search-city');
     const autocomplete = new googleMaps.places.Autocomplete(input, options);
     google.maps.event.addListener(autocomplete, 'place_changed', function () {
       let place = autocomplete.getPlace();

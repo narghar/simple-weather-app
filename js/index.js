@@ -1,12 +1,19 @@
 
 const geolocation = require("./modules/geolocation");
-const getData = require("./modules/dataProcessing");
 const Prompt = require("./modules/prompt");
 
+<<<<<<< HEAD
 const search = document.querySelector('.search');
 
+=======
+>>>>>>> newLayout
 geolocation();
+
 
 Prompt.loadGoogleMapsApi().then(function(googleMaps) {
   Prompt.startAutocomplete(googleMaps);
 });
+<<<<<<< HEAD
+=======
+
+>>>>>>> newLayout
