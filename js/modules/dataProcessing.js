@@ -7,7 +7,7 @@ const setDate = require("./setCurrentDate");
 let units = 'metric';
 let lang = 'pl';
 
-async function getData(query) {
+async function getData(query, imageReference) {
   console.log(JSON.stringify(query));
   query.units = units;
   query.lang = lang;
@@ -34,14 +34,15 @@ async function getData(query) {
   console.log(data);
   console.log("forecast", dataForecast);
   if (data.weather && dataForecast.list) {
-    setData(data, dataForecast);
+    setData(data, dataForecast, imageReference);
   }
 }
 
-function setData(data, dataForecast) {
+function setData(data, dataForecast, imageReference) {
   setMainData(data);
   setTodayData(data);
   setForecastData(dataForecast);
+  setBackgroundImage(imageReference);
 }
 
 function setMainData(data) {
@@ -104,6 +105,12 @@ function createPredictBox() {
   press.setAttribute("class", "forecast-pressure");
   predictBox.appendChild(press);
   document.querySelector(".predict").appendChild(predictBox);
+}
+
+function setBackgroundImage(imageReference) {
+  if(imageReference) {
+    document.body.style.backgroundImage = `url('${imageReference}')`;
+  }
 }
 
 function createDate(inc) {
