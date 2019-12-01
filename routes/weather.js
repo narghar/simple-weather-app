@@ -26,12 +26,14 @@ router.post('/', (req, res) => {
 });
 
 router.post('/forecast', (req, res) => {
-  if(req.body.q) {req.body.q = decodeURI(req.body.q)};
+  if (req.body.q) {
+    req.body.q = decodeURI(req.body.q) + ',PL';
+  };
   console.log(req.body);
   const params = new URLSearchParams(req.body);
   params.append('appid', key);
   urlForecast.search = params.toString();
-  
+
   request(urlForecast.href, (error, response, body) => {
     console.log('error:', error);
     console.log('statusCode:', response && response.statusCode);
