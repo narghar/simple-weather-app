@@ -61,7 +61,7 @@ function setTodayData(data) {
   box.querySelector(".forecast-temp-icon").setAttribute('src', `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
   box.querySelector(".forecast-temp").textContent = (Math.round(data.main.temp * 10)/10) + '°C';
   box.querySelector(".forecast-humidity").textContent = data.main.humidity + '%';
-  box.querySelector(".forecast-wind").textContent = (Math.round(data.wind.speed * 10)/10) + 'km/h';
+  box.querySelector(".forecast-wind").textContent = (Math.round(data.wind.speed * 10 * 3.6)/10) + 'km/h';
   box.querySelector(".forecast-pressure").textContent = data.main.pressure + 'hPa';
 }
 
@@ -77,9 +77,9 @@ function setForecastData(dataForecast) {
     box[i+1].querySelector(".forecast-temp-icon").setAttribute('src', `https://openweathermap.org/img/wn/${dataForecast.list[i].weather[0].icon}@2x.png`);
     box[i+1].querySelector(".forecast-temp").textContent = (Math.round(dataForecast.list[i].main.temp * 10)/10) + '°C';
     box[i+1].querySelector(".forecast-humidity").textContent = dataForecast.list[i].main.humidity + '%';
-    box[i+1].querySelector(".forecast-wind").textContent = (Math.round(dataForecast.list[i].wind.speed * 10)/10) + 'km/h';
+    box[i+1].querySelector(".forecast-wind").textContent = (Math.round(dataForecast.list[i].wind.speed * 10 *3.6)/10) + 'km/h';
     box[i+1].querySelector(".forecast-pressure").textContent = dataForecast.list[i].main.pressure + 'hPa';
-  } 
+  }
 }
 
 function createPredictBox() {
@@ -103,7 +103,7 @@ function createPredictBox() {
   const press = document.createElement("div");
   press.setAttribute("class", "forecast-pressure");
   predictBox.appendChild(press);
-  document.querySelector(".predict").appendChild(predictBox); 
+  document.querySelector(".predict").appendChild(predictBox);
 }
 
 function createDate(inc) {
