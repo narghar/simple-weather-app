@@ -1,21 +1,6 @@
-<<<<<<< HEAD
-
-=======
-const input = document.getElementById('search-city');
->>>>>>> newLayout
-const city = document.querySelector('.city');
-const country = document.querySelector('.country');
 const temperature = document.querySelector('.temperature');
 const condition__icon = document.querySelector('.condition__icon');
-const condition__desc = document.querySelector('.condition__desc');
-const pressure = document.querySelector('.pressure');
-const wind = document.querySelector('.wind');
-const humidity = document.querySelector('.humidity');
-const dayOne = document.querySelector('.dayOne');
-const dayTwo = document.querySelector('.dayTwo');
-const dayThree = document.querySelector('.dayThree');
-const dayFour = document.querySelector('.dayFour');
-const dayFive = document.querySelector('.dayFive');
+const input = document.getElementById('search-city');
 
 const setDate = require("./setCurrentDate");
 

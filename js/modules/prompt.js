@@ -1,9 +1,5 @@
 const loadGoogleMapsApi = require('load-google-maps-api');
 const getData = require('./dataProcessing');
-<<<<<<< HEAD
-=======
-
->>>>>>> newLayout
 class Prompt {
 
   static loadGoogleMapsApi() {
