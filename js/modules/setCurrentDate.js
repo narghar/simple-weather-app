@@ -4,7 +4,7 @@ function setActualDate() {
     const mm = String(actualDate.getMonth() + 1).padStart(2, '0'); //January is 0!
     const yyyy = actualDate.getFullYear();
 
-    const today = mm + '.' + dd + '.' + yyyy;
+    const today = dd + '.' + mm + '.' + yyyy;
 
     document.querySelector(".date").innerHTML = today;
 }

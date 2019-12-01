@@ -48,7 +48,7 @@ main {
   letter-spacing: 5px;
 }
 
-#searchTextField {
+#search-city {
   width: 90%;
   color: var(--font-color);
   text-align: center;
@@ -68,7 +68,7 @@ main {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 2fr 1fr;
   grid-template-areas: 
-    "empty1 icon empty2 temp empty3";
+    ". icon . temp .";
   justify-content: space-around;
   align-items: center;
   font-size: 6rem;
@@ -100,24 +100,67 @@ main {
   margin: 0;
 }
 
-
-
 .predict {
   width: 100%;
+  height: 80%;
   display: flex;
-  border: solid 2px green;
   justify-content: space-around;
 }
 
 .predicted-data {
-  border: solid 2px red;
+  width: 18%;
+  border: 2px solid hsla(254, 53%, 23%, 0.3);
+  border-radius: 10px;
   display: grid;
   grid-template-rows: 1fr 2fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "date date"
+    "icon temp"
+    "humidity humidity"
+    "wind wind"
+    "pressure pressure";
+  grid-gap: 2px;
   justify-items: center;
-  align-content: center;
+  align-items: center;
 }
 
-.holder-with-img {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+.forecast-date {
+  grid-area: date;
+  display: inline;
 }
+
+.forecast-temp-icon {
+  grid-area: icon;
+  display: inline;
+}
+
+.icon {
+  width:100%;
+}
+
+.forecast-temp {
+  grid-area: temp;
+  display: inline;
+}
+
+.forecast-humidity {
+  grid-area: humidity;
+  display: inline;
+}
+
+.forecast-wind-icon {
+  grid-area: windicon;
+  display: inline;
+}
+
+.forecast-wind {
+  grid-area: wind;
+  display: inline;
+}
+
+.forecast-pressure {
+  grid-area: pressure;
+  display: inline;
+}
+
